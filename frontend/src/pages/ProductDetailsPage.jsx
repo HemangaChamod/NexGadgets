@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
+
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -11,7 +13,9 @@ export default function ProductDetailsPage() {
   const { dispatch } = useContext(CartContext);
   const navigate = useNavigate();
 
-  const API_URL = import.meta.env.VITE_API_URL; // dynamic base URL
+  const API_URL = import.meta.env.VITE_API_URL; 
+
+  const { user } = useAuth();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -46,14 +50,24 @@ export default function ProductDetailsPage() {
     );
 
   const handleAddToCart = () => {
-    dispatch({ type: "ADD_ITEM", payload: product });
-    toast.success("Item added to cart!");
-  };
+  if (!user) {
+    toast.error("Please log in first.");
+    return;
+  }
 
-  const handleBuyNow = () => {
-    dispatch({ type: "ADD_ITEM", payload: product });
-    navigate("/cart");
-  };
+  dispatch({ type: "ADD_ITEM", payload: { ...product, qty: 1 }, user });
+  toast.success("Item added to cart!");
+};
+
+const handleBuyNow = () => {
+  if (!user) {
+    toast.error("Please log in first.");
+    return;
+  }
+
+  dispatch({ type: "ADD_ITEM", payload: { ...product, qty: 1 }, user });
+  navigate("/cart");
+};
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-10">
