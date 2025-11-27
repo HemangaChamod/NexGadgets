@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
+const { protect, admin } = require('./middleware/authMiddleware');
+
 const app = express();
 
 app.get('/health', (req, res) => res.status(200).send('OK'));
@@ -43,7 +45,7 @@ app.use('/api/products', require('./routes/productRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/orders', require('./routes/orderRoutes'));
 app.use('/api/payment', require('./routes/paymentRoutes'));
-app.use('/api/admin', require('./routes/adminRoutes'));
+app.use('/api/admin', protect, admin, require('./routes/adminRoutes'));
 
 
 const PORT = process.env.PORT || 5000;
