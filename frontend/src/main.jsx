@@ -12,11 +12,11 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Elements stripe={stripePromise}>
-      <CartProvider>
-        <AuthProvider>
+      <AuthProvider>
+        <CartProvider>
           <App />
-        </AuthProvider>
-      </CartProvider>
+        </CartProvider>
+      </AuthProvider>
     </Elements>
   </StrictMode>
 );
