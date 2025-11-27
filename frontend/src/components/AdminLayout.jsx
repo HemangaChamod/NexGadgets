@@ -4,14 +4,21 @@ import { useAuth } from "../context/AuthContext";
 
 const AdminLayout = () => {
   const location = useLocation();
-  const { user, loading } = useAuth(); // assume your context has a loading flag
+  const { user, loading } = useAuth();
 
-  // While user data is loading, don't render anything
-  if (loading) return <p>Loading...</p>;
+  // If AuthContext is still loading user → show loading (do NOT redirect)
+  if (loading || user === undefined) {
+    return <p>Checking permissions...</p>;
+  }
 
-  // Redirect non-admin users
-  if (!user || !user.isAdmin) {
+  // If user exists and user.isAdmin === false → redirect
+  if (user && !user.isAdmin) {
     return <Navigate to="/" replace />;
+  }
+
+  // If NO user at all → redirect to login
+  if (!user) {
+    return <Navigate to="/login" replace />;
   }
 
   const navItems = [
@@ -43,7 +50,7 @@ const AdminLayout = () => {
         </nav>
       </aside>
 
-      {/* Page Content */}
+      {/* Content */}
       <main className="flex-1 p-6 bg-gray-100">
         <Outlet />
       </main>
