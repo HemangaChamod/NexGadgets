@@ -1,3 +1,3 @@
 ## 🚀 Live Demo
 
-🔗 nex-gadgets-frontend.vercel.app
+🔗 https://nex-gadgets-frontend.vercel.app
