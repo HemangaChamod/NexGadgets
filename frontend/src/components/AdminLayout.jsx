@@ -1,8 +1,15 @@
 import React from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, Navigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext"; // make sure you have this
 
 const AdminLayout = () => {
   const location = useLocation();
+  const { user } = useAuth();
+
+  // Redirect non-admin users
+  if (!user || !user.isAdmin) {
+    return <Navigate to="/" replace />; // redirect to home or another safe route
+  }
 
   const navItems = [
     { path: "/admin/dashboard", label: "Dashboard" },
