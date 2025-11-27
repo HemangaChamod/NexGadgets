@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext"; // make sure you have this context
+import { Navigate } from "react-router-dom";
 import API from "../axiosConfig";
 
 const AdminDashboard = () => {
+  const { user } = useAuth(); // get current user
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  // Redirect non-admins immediately
+  if (!user || !user.isAdmin) {
+    return <Navigate to="/" replace />;
+  }
 
   useEffect(() => {
     const fetchStats = async () => {
