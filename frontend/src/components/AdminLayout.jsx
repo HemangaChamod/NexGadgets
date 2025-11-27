@@ -1,25 +1,8 @@
 import React from "react";
-import { Link, Outlet, useLocation, Navigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 const AdminLayout = () => {
   const location = useLocation();
-  const { user, loading } = useAuth();
-
-  // If AuthContext is still loading user → show loading (do NOT redirect)
-  if (loading || user === undefined) {
-    return <p>Checking permissions...</p>;
-  }
-
-  // If user exists and user.isAdmin === false → redirect
-  if (user && !user.isAdmin) {
-    return <Navigate to="/" replace />;
-  }
-
-  // If NO user at all → redirect to login
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
 
   const navItems = [
     { path: "/admin/dashboard", label: "Dashboard" },
@@ -50,7 +33,7 @@ const AdminLayout = () => {
         </nav>
       </aside>
 
-      {/* Content */}
+      {/* Page Content */}
       <main className="flex-1 p-6 bg-gray-100">
         <Outlet />
       </main>
