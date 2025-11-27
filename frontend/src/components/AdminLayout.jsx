@@ -1,14 +1,17 @@
 import React from "react";
 import { Link, Outlet, useLocation, Navigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext"; // make sure you have this
+import { useAuth } from "../context/AuthContext";
 
 const AdminLayout = () => {
   const location = useLocation();
-  const { user } = useAuth();
+  const { user, loading } = useAuth(); // assume your context has a loading flag
+
+  // While user data is loading, don't render anything
+  if (loading) return <p>Loading...</p>;
 
   // Redirect non-admin users
   if (!user || !user.isAdmin) {
-    return <Navigate to="/" replace />; // redirect to home or another safe route
+    return <Navigate to="/" replace />;
   }
 
   const navItems = [
