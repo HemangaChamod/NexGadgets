@@ -1,3 +1,3 @@
 ## 🚀 Live Demo
 
-🔗 https://nex-gadgets-frontend.vercel.app
+🔗 http://nexgadget-frontend.s3-website.eu-north-1.amazonaws.com
