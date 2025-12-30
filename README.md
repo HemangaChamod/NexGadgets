@@ -53,13 +53,9 @@ Online payments are handled securely via **Stripe (test mode)**.
 - Cart state is preserved during the session
 - Real-time price calculations before checkout
 
----
-
 ### 💳 Stripe Payment Integration
 - Secure online payments using **Stripe (Test Mode)**
 - Backend handles payment intent creation
-
----
 
 ### 📦 Order Management System
 - Orders are created after successful payment
@@ -68,8 +64,6 @@ Online payments are handled securely via **Stripe (test mode)**.
   - Total amount
   - Payment status
 - Order data is securely stored in the database
-
----
 
 ### 🛠️ Admin Dashboard
 
