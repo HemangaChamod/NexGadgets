@@ -38,8 +38,6 @@ Online payments are handled securely via **Stripe (test mode)**.
 - JSON Web Tokens (JWT) are used for session management
 - Protected routes for authenticated users and admins
 
----
-
 ### 🛍️ Product Catalogue & Product Details
 - View a list of available products
 - Detailed product pages with:
@@ -47,8 +45,6 @@ Online payments are handled securely via **Stripe (test mode)**.
   - Descriptions
   - Prices
 - Data is dynamically fetched from the backend API
-
----
 
 ### 🛒 Dynamic Shopping Cart
 - Add products to cart
