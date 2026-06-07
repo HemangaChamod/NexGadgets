@@ -1,8 +1,5 @@
 # NexGadget – eCommerce Platform
 
-🚀 **Live Demo:**  
-👉 http://nexgadget-frontend.s3-website.eu-north-1.amazonaws.com
-
 NexGadget is a **fully functional eCommerce web application** built using the **MERN stack (MongoDB, Express.js, React.js, Node.js)**.  
 
 The application is **securely deployed on AWS**, using **EC2 for backend services** and **S3 for frontend hosting**, ensuring scalability, performance, and reliability.  
@@ -75,4 +72,6 @@ Online payments are handled securely via **Stripe (test mode)**.
   - View all orders
   - Update order statuses 
 
-
+🚀 **Live Demo:**  
+👉 http://nexgadget-frontend.s3-website.eu-north-1.amazonaws.com
+👉 https://nex-gadgets-frontend.vercel.app/
