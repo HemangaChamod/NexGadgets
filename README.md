@@ -74,4 +74,5 @@ Online payments are handled securely via **Stripe (test mode)**.
 
 🚀 **Live Demo:**  
 👉 http://nexgadget-frontend.s3-website.eu-north-1.amazonaws.com
+
 👉 https://nex-gadgets-frontend.vercel.app/
